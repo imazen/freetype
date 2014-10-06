@@ -70,10 +70,13 @@ build_script:
   - SET cmake_cmd=cmake -G "%vc_cm_arg%" %cmake_args%
   - if [%static_runtime%]==[1] SET cmake_cmd=%cmake_cmd% %static_vcargs%
   
-  - 'if [%build_compiler%]==[msvc] (
-        echo #define FT_EXPORT(x) __declspec(dllexport) x >> include\config\ftoption.h &&
-        echo #define FT_BASE(x) __declspec(dllexport) x >> include\config\ftoption.h &&
-        echo #define FT_EXPORT_DEF(x) __declspec(dllexport) x >> include\config\ftoption.h &&
+  - ps: if($env:build_compiler -eq 'msvc') {
+          echo '#define FT_EXPORT(x) __declspec(dllexport) x' >> include\config\ftoption.h;
+          echo '#define FT_BASE(x) __declspec(dllexport) x' >> include\config\ftoption.h;
+          echo '#define FT_EXPORT_DEF(x) __declspec(dllexport) x' >> include\config\ftoption.h;
+        }
+  
+  - if [%build_compiler%]==[msvc] (
         %cmake_cmd% &&
         msbuild freetype.sln /p:Configuration=Release /v:m &&
         7z a %zip%
@@ -81,7 +84,7 @@ build_script:
           .\Release\freetype.dll
           .\Release\freetype_a.lib
           .\relinc\freetype &&
-        appveyor PushArtifact %zip% )'
+        appveyor PushArtifact %zip% )
   
   - ps: if(Test-Path $env:zip) { zip2nuget $env:zip "freetype-$($env:build_compiler)-$($env:build_platform)" }
   
