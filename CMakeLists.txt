@@ -125,7 +125,13 @@ include_directories("src/raster")
 include_directories("src/psaux")
 include_directories("src/psnames")
 
-add_library(freetype ${BASE_SRCS})
+if(MSVC)
+  add_library(freetype SHARED ${BASE_SRCS})
+  add_library(freetype_a STATIC ${BASE_SRCS})
+else()
+  add_library(freetype.dll SHARED ${BASE_SRCS})
+  add_library(freetype STATIC ${BASE_SRCS})
+endif()
 
 # Installations
 # Note the trailing slash in the argument to the `DIRECTORY' directive
