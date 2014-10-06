@@ -82,7 +82,7 @@ build_script:
         7z a %zip%
           .\Release\freetype.lib
           .\Release\freetype.dll
-          .\Release\freetype_a.lib
+          .\Release\freetype_static.lib
           .\relinc\freetype &&
         appveyor PushArtifact %zip% )
   
@@ -103,7 +103,7 @@ build_script:
       %cmake_cmd% &&
       mingw32-make &&
       7z a %zip%
-        libfreetype.a
+        libfreetype_static.a
         libfreetype.dll
         libfreetype.dll.a
         .\relinc\freetype &&
