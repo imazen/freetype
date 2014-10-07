@@ -128,6 +128,10 @@ include_directories("src/psnames")
 add_library(freetype SHARED ${BASE_SRCS})
 add_library(freetype_static STATIC ${BASE_SRCS})
 
+if(NOT MSVC)
+ set_target_properties(freetype_static PROPERTIES OUTPUT_NAME freetype)
+endif()
+
 # Installations
 # Note the trailing slash in the argument to the `DIRECTORY' directive
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/

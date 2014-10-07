@@ -103,7 +103,7 @@ build_script:
       %cmake_cmd% &&
       mingw32-make &&
       7z a %zip%
-        libfreetype_static.a
+        libfreetype.a
         libfreetype.dll
         libfreetype.dll.a
         .\relinc\freetype &&
