@@ -1,3 +1,4 @@
+version: 2.5.3.{build}
 shallow_clone: true
 
 
@@ -57,8 +58,8 @@ install:
 
 build_script:
   
-  - ps: $nupkg_b = "zlib-$($env:build_compiler)-$($env:build_platform)-$($env:APPVEYOR_REPO_BRANCH)";
-  - ps: $nupkg_c = "zlib-$($env:build_compiler)-$($env:build_platform)-$($env:APPVEYOR_REPO_COMMIT)";
+  - ps: $nupkg_b = "freetype-$($env:build_compiler)-$($env:build_platform)-$($env:APPVEYOR_REPO_BRANCH)";
+  - ps: $nupkg_c = "freetype-$($env:build_compiler)-$($env:build_platform)-$($env:APPVEYOR_REPO_COMMIT)";
   
   - mkdir relinc\freetype\config
   - copy include\*.h relinc\freetype\
