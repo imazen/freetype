@@ -10,3 +10,7 @@ Current master:
 Last build:
 
 [![Build status](https://ci.appveyor.com/api/projects/status/99b9rsxcfhs6qjx1)](https://ci.appveyor.com/project/nathanaeljones/freetype)
+
+### Drone.io build
+
+[![Build Status](https://drone.io/github.com/imazen/freetype/status.png)](https://drone.io/github.com/imazen/freetype/latest)
