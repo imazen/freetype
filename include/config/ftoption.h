@@ -22,6 +22,11 @@
 
 #include <ft2build.h>
 
+#ifdef _MSC_VER
+  #define FT_EXPORT(x) __declspec(dllexport) x
+  #define FT_BASE(x) __declspec(dllexport) x
+  #define FT_EXPORT_DEF(x) __declspec(dllexport) x
+#endif
 
 FT_BEGIN_HEADER
 
